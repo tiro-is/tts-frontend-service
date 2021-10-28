@@ -3,4 +3,4 @@
 	url = git@github.com:grammatek/tts-frontend-api.git
 [submodule "normalizer"]
 	path = src/regina_normalizer
-	url = git@github.com:grammatek/regina_normalizer.git
+	url = git@github.com:tiro-is/regina_normalizer.git
