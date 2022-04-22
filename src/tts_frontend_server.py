@@ -82,7 +82,9 @@ class TTSFrontendServicer(tts_frontend_service_pb2_grpc.TTSFrontendServicer):
 
 
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    # TODO(rkjaran): Underlying code is not thread safe. So we are forced to use only
+    #   one worker thread.
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     tts_frontend_service_pb2_grpc.add_TTSFrontendServicer_to_server(TTSFrontendServicer(), server)
     server.add_insecure_port('[::]:8080')
     server.start()
